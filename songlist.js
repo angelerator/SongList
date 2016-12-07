@@ -13,7 +13,7 @@ function Song(title,artist,album,year)
     return title + " by " + artist;
   }
   this.releaseInfo = function(){
-    return "Released on " + album + " in " + year;
+    return artist + " released " + album + " in " + year;
   };
   this.listened = 0;
   this.play = function(){
@@ -29,6 +29,7 @@ function loadList()
   allSongs.push(new Song("Get Lucky","Daft Punk","Random Access Memories",2013));
   allSongs.push(new Song("Inevitable","Shakira","Dónde Están los Ladrones?",1998));
   allSongs.push(new Song("Wagon Wheel","Old Crow Medicine Show","Old Crow Medicine Show",2004));
+  displaySong();
 }
 
 //Progresses to the next song to the list, or if the end of the list has been
@@ -43,4 +44,8 @@ function nextSong()
 function displaySong()
 {
   document.getElementById("nowPlaying").innerHTML = allSongs[current].toString();
+  document.getElementById("releaseinfo").innerHTML = allSongs[current].releaseInfo();
+  //allSongs[current].play();
+  //document.getElementById("timesplayed").innerHTML = allSongs[current].listened;
+
 }
