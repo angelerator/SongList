@@ -17,7 +17,7 @@ function Song(title,artist,album,year)
   };
   this.listened = 0;
   this.play = function(){
-    listened++;
+    this.listened++;
   };
 }
 
@@ -36,6 +36,7 @@ function loadList()
 //reached, then loop back to the beginning
 function nextSong()
 {
+  allSongs[current].play();
   current = (current+1)%allSongs.length;
   displaySong();
 }
@@ -45,7 +46,6 @@ function displaySong()
 {
   document.getElementById("nowPlaying").innerHTML = allSongs[current].toString();
   document.getElementById("releaseinfo").innerHTML = allSongs[current].releaseInfo();
-  //allSongs[current].play();
-  //document.getElementById("timesplayed").innerHTML = allSongs[current].listened;
+  document.getElementById("timesplayed").innerHTML = allSongs[current].listened;
 
 }
